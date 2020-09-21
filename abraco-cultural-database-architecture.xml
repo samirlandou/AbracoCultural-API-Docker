@@ -1,0 +1,913 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- SQL XML created by WWW SQL Designer, https://github.com/ondras/wwwsqldesigner/ -->
+<!-- Active URL: https://ondras.zarovi.cz/sql/demo/ -->
+<sql>
+<datatypes db="mysql">
+	<group label="Numeric" color="rgb(238,238,170)">
+		<type label="Integer" length="0" sql="INTEGER" quote=""/>
+	 	<type label="TINYINT" length="0" sql="TINYINT" quote=""/>
+	 	<type label="SMALLINT" length="0" sql="SMALLINT" quote=""/>
+	 	<type label="MEDIUMINT" length="0" sql="MEDIUMINT" quote=""/>
+	 	<type label="INT" length="0" sql="INT" quote=""/>
+		<type label="BIGINT" length="0" sql="BIGINT" quote=""/>
+		<type label="Decimal" length="1" sql="DECIMAL" re="DEC" quote=""/>
+		<type label="Single precision" length="0" sql="FLOAT" quote=""/>
+		<type label="Double precision" length="0" sql="DOUBLE" re="DOUBLE" quote=""/>
+	</group>
+
+	<group label="Character" color="rgb(255,200,200)">
+		<type label="Char" length="1" sql="CHAR" quote="'"/>
+		<type label="Varchar" length="1" sql="VARCHAR" quote="'"/>
+		<type label="Text" length="0" sql="MEDIUMTEXT" re="TEXT" quote="'"/>
+		<type label="Binary" length="1" sql="BINARY" quote="'"/>
+		<type label="Varbinary" length="1" sql="VARBINARY" quote="'"/>
+		<type label="BLOB" length="0" sql="BLOB" re="BLOB" quote="'"/>
+	</group>
+
+	<group label="Date &amp; Time" color="rgb(200,255,200)">
+		<type label="Date" length="0" sql="DATE" quote="'"/>
+		<type label="Time" length="0" sql="TIME" quote="'"/>
+		<type label="Datetime" length="0" sql="DATETIME" quote="'"/>
+		<type label="Year" length="0" sql="YEAR" quote=""/>
+		<type label="Timestamp" length="0" sql="TIMESTAMP" quote="'"/>
+	</group>
+	
+	<group label="Miscellaneous" color="rgb(200,200,255)">
+		<type label="ENUM" length="1" sql="ENUM" quote=""/>
+		<type label="SET" length="1" sql="SET" quote=""/>
+		<type label="Bit" length="0" sql="bit" quote=""/>
+	</group>
+</datatypes><table x="502" y="1599" name="TB_LANGUAGE">
+<row name="id" null="1" autoincrement="1">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="CD_LANGUAGE" null="0" autoincrement="0">
+<datatype>MEDIUMTEXT(2)</datatype>
+<default>'NULL'</default><comment>Informs Language's code. e.g. EN | FR | ES | AR | PT</comment>
+</row>
+<row name="DE_LANGUAGE" null="0" autoincrement="0">
+<datatype>MEDIUMTEXT(20)</datatype>
+<default>'NULL'</default><comment>Language's description. e.g. English | French | Spanish | Arab | Portuguese | ...</comment>
+</row>
+<row name="ID_LANGUAGE_LEVEL" null="0" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default><relation table="TB_LANGAUGE_LEVEL" row="id" />
+<comment>Informs Langue's level. e.g. A1.1 | A1.2 | B1.2 | ...</comment>
+</row>
+<key type="PRIMARY" name="">
+<part>id</part>
+</key>
+<comment>This table stores User's data table Language. e.g. English(EN), French(FR), Spanish(ES), Arabe(AR), Portuguese(PT), ...</comment>
+</table>
+<table x="502" y="1753" name="TB_LANGAUGE_LEVEL">
+<row name="id" null="1" autoincrement="1">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="CD_LANGUAGE_LEVEL" null="0" autoincrement="0">
+<datatype>MEDIUMTEXT(4)</datatype>
+<default>'NULL'</default><comment>Informs Language level's code. e.g. A1.2 | A1.2 | B1.2 | ...</comment>
+</row>
+<row name="DE_LANGUAGE_LEVEL" null="0" autoincrement="0">
+<datatype>MEDIUMTEXT(20)</datatype>
+<default>'NULL'</default><comment>Informs Language level's description. e.g. English 1 | English 2 | French 1 | ....</comment>
+</row>
+<key type="PRIMARY" name="">
+<part>id</part>
+</key>
+<comment>This table stores Langue level's data table. e.g. A1.1, A1.2, B1.1, B1.2, ...</comment>
+</table>
+<table x="23" y="950" name="TB_USER">
+<row name="id" null="1" autoincrement="1">
+<datatype>BIGINT</datatype>
+<default>NULL</default></row>
+<row name="NM_COMPLETE_NAME" null="0" autoincrement="0">
+<datatype>MEDIUMTEXT(60)</datatype>
+<default>'NULL'</default><comment>informs User's Complete Name. e.g. John Doe</comment>
+</row>
+<row name="DE_SEX" null="0" autoincrement="0">
+<datatype>MEDIUMTEXT(10)</datatype>
+<default>'NULL'</default><comment>Informs User's Sex. e.g Male | Female | Trans | Other ...</comment>
+</row>
+<row name="DE_CPF" null="0" autoincrement="0">
+<datatype>MEDIUMTEXT(14)</datatype>
+<default>'NULL'</default><comment>Informs User's CPF i.e. Brasilian individual registration e.g. 999.999.999-99</comment>
+</row>
+<row name="DE_CNPJ" null="1" autoincrement="0">
+<datatype>MEDIUMTEXT(18)</datatype>
+<default>NULL</default><comment>Informs User's CNPJ  i.e. Brasilian company registration e.g 99.999.999/9999-99</comment>
+</row>
+<row name="DE_EMAIL" null="0" autoincrement="0">
+<datatype>MEDIUMTEXT(60)</datatype>
+<default>'NULL'</default><comment>Informs User's e-mai.l e.g. john@doe.com</comment>
+</row>
+<row name="DE_TELEPHONE" null="1" autoincrement="0">
+<datatype>MEDIUMTEXT(20)</datatype>
+<default>NULL</default><comment>Informs User's Telephone. e.g. (+55)61-3123-4567</comment>
+</row>
+<row name="DE_CELLPHONE" null="0" autoincrement="0">
+<datatype>MEDIUMTEXT(20)</datatype>
+<default>'NULL'</default><comment>Informs User's Cellphone. e.g. (+55)61-91234-5678</comment>
+</row>
+<row name="DE_ADDRESS" null="1" autoincrement="0">
+<datatype>MEDIUMTEXT(100)</datatype>
+<default>NULL</default><comment>User's Address e.g. Rua Pinheiros, 700, São Paulo, SP</comment>
+</row>
+<row name="DE_PASSWORD" null="0" autoincrement="0">
+<datatype>MEDIUMTEXT(20)</datatype>
+<default>'NULL'</default><comment>Informs the password to login. e.g. P@ssw0rd</comment>
+</row>
+<row name="DE_PASSWORD_REMEMBER" null="0" autoincrement="0">
+<datatype>MEDIUMTEXT(30)</datatype>
+<default>'NULL'</default><comment>Informs users a text to remember the password. e.g. What is my favorite hoby?</comment>
+</row>
+<row name="TP_REGISTER" null="0" autoincrement="0">
+<datatype>BINARY</datatype>
+<default>'NULL'</default><comment>Informs User's register type i.e. whether the use has been saved using or not an upload file.</comment>
+</row>
+<row name="DT_REGISTER" null="0" autoincrement="0">
+<datatype>TIMESTAMP</datatype>
+<default>'NULL'</default><comment>Informs the date when the information has been saved. e.g. 14/09/2020</comment>
+</row>
+<row name="ID_PROFILE" null="0" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default><relation table="TB_PROFILE" row="id" />
+<comment>Informs User's profile. e.g. Administrator(Adm)</comment>
+</row>
+<row name="ID_STATUS" null="0" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default><relation table="TB_STATUS" row="id" />
+<comment>Informs User's status. e.g. Enabled (Enbl)</comment>
+</row>
+<row name="ID_OFFICE_TOWN" null="0" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default><relation table="TB_OFFICE_TOWN" row="id" />
+<comment>Informs User's office town. e.g. São Paulo (SP)</comment>
+</row>
+<row name="ID_LANGUAGE_FIRST" null="0" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default><relation table="TB_LANGUAGE" row="id" />
+<comment>Informs User's first language of interest (required). e.g. English (A1.1)</comment>
+</row>
+<row name="ID_LANGUAGE_SECOND" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default><relation table="TB_LANGUAGE" row="id" />
+<comment>Informs User's second language of interest (optional). e.g. French (B.1.2)</comment>
+</row>
+<row name="ID_LANGUAGE_THIRD" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default><relation table="TB_LANGUAGE" row="id" />
+<comment>Informs User's third language of interest (optional). e.g. Spanish (A1.2)</comment>
+</row>
+<row name="ID_NATIONALITY" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default><relation table="TB_NATIONALITY" row="id" />
+<comment>Informs User's nationality. e.g. Brazilian | Syrian | ...</comment>
+</row>
+<row name="ID_ADDITIONAL_INFO" null="0" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default><relation table="TB_ADDITIONAL_INFO" row="id" />
+<comment>Informs User's additional Informations. e.g. Nationality | bank account | ...</comment>
+</row>
+<row name="ID_BANK_ACCOUNT" null="0" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default><relation table="TB_BANK_ACCOUNT" row="id" />
+<comment>Informs user's bank account for person or company who wil be contracted.</comment>
+</row>
+<key type="PRIMARY" name="">
+<part>id</part>
+</key>
+<comment>This table stores User's data</comment>
+</table>
+<table x="503" y="1000" name="TB_PROFILE">
+<row name="id" null="1" autoincrement="1">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="CD_PROFILE" null="0" autoincrement="0">
+<datatype>MEDIUMTEXT(4)</datatype>
+<default>'NULL'</default><comment>Informs Profile's code. e.g. PROF | ADM | ...</comment>
+</row>
+<row name="DE_PROFILE" null="0" autoincrement="0">
+<datatype>MEDIUMTEXT(20)</datatype>
+<default>'NULL'</default><comment>Informs Profile's description. e.g. Professor | Admnistrator | Students | Coordinator |...</comment>
+</row>
+<row name="ID_ACCESS_RIGHT" null="0" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default><relation table="TB_ACCESS_RIGHT" row="id" />
+<comment>Informs the access right of the profile.</comment>
+</row>
+<key type="PRIMARY" name="">
+<part>id</part>
+</key>
+<comment>This table stores User's data table Profiles. e.g. Administrator(ADM), Coordinator(COOD), Professor(PROF), Student(STUD), Visitor(VIST),...</comment>
+</table>
+<table x="503" y="1301" name="TB_OFFICE_TOWN">
+<row name="id" null="1" autoincrement="1">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="CD_OFFICE_TOWN" null="0" autoincrement="0">
+<datatype>MEDIUMTEXT(2)</datatype>
+<default>'NULL'</default><comment>Informs Office town's code. e.g SP | RJ | ...</comment>
+</row>
+<row name="DE_OFFICE_TOWN" null="0" autoincrement="0">
+<datatype>MEDIUMTEXT(20)</datatype>
+<default>'NULL'</default><comment>Informs Office town's description. e.g. São Paulo | Rio de Janeiro | ...</comment>
+</row>
+<row name="ID_OFFICE" null="0" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default><relation table="TB_OFFICE" row="id" />
+<comment>Informs the Office where the course will happen. e.g. Pinheiro (PINH) | Tatuapé (TATU) | ...</comment>
+</row>
+<key type="PRIMARY" name="">
+<part>id</part>
+</key>
+<comment>This table stores Users's data table Abraço Cultural Office Town where the user has been registred. e.g. São Paulo(SP), Rio de Janiero(RJ), ...</comment>
+</table>
+<table x="501" y="1453" name="TB_OFFICE">
+<row name="id" null="1" autoincrement="1">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="CD_OFFICE" null="0" autoincrement="0">
+<datatype>MEDIUMTEXT(4)</datatype>
+<default>'NULL'</default><comment>Informs Office's code. e.g. PINH | TATU | ...</comment>
+</row>
+<row name="DE_OFFICE" null="0" autoincrement="0">
+<datatype>MEDIUMTEXT(20)</datatype>
+<default>'NULL'</default><comment>Informs Office's description. e.g. Pinheiro | Tatuapé | ...</comment>
+</row>
+<key type="PRIMARY" name="">
+<part>id</part>
+</key>
+<comment>This table stores Abraço cultural's Office referenced to the Office's Town. e.g. Pinheiros(PINH), Tatuapé(TATU) ...</comment>
+</table>
+<table x="502" y="1152" name="TB_STATUS">
+<row name="id" null="1" autoincrement="1">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="CD_STATUS" null="0" autoincrement="0">
+<datatype>MEDIUMTEXT(4)</datatype>
+<default>'NULL'</default><comment>Informs Status' code. e.g. DISBL | ENBL</comment>
+</row>
+<row name="DE_STATUS" null="0" autoincrement="0">
+<datatype>MEDIUMTEXT(20)</datatype>
+<default>'NULL'</default><comment>Informs Status' description. e.g. Disabled | Enabled</comment>
+</row>
+<key type="PRIMARY" name="">
+<part>id</part>
+</key>
+<comment>This table stores User's Status. e.g. Enabled(ENBL), Disabled (DISBL), ...</comment>
+</table>
+<table x="1702" y="196" name="TB_CONTRACT">
+<row name="id" null="1" autoincrement="1">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="DE_CONTRACT_CODE" null="0" autoincrement="0">
+<datatype>MEDIUMTEXT(60)</datatype>
+<default>'NULL'</default><comment>Informs a unique code for the contract according to the information passed. e.g. 1Sem20_SP_PINH_EN1_EXT_SEG-TER_19H_01H30</comment>
+</row>
+<row name="HR_CLASS_BEGIN" null="0" autoincrement="0">
+<datatype>TIME</datatype>
+<default>'NULL'</default><comment>Informs (in Hour) when the class will begin. e.g. 09h30</comment>
+</row>
+<row name="HR_CLASS_END" null="0" autoincrement="0">
+<datatype>TIME</datatype>
+<default>'NULL'</default><comment>Informs (in Hour) when the class will end. e.g. 12h45</comment>
+</row>
+<row name="HR_CLASS_BREAK" null="0" autoincrement="0">
+<datatype>TIME</datatype>
+<default>'0'</default><comment>Informs (in Minute) the break time in case exists one. e.g. 15mn for the break | default 0mn</comment>
+</row>
+<row name="HR_CLASS_TIME" null="0" autoincrement="0">
+<datatype>TIME</datatype>
+<default>'NULL'</default><comment>Informs (in Minute) the total class time. e.g. 1h30 of class = 90mn</comment>
+</row>
+<row name="HR_CLASS_WEEKLY_TIME" null="0" autoincrement="0">
+<datatype>TIME</datatype>
+<default>'NULL'</default><comment>Informs (in Minute) total class time per week. e.g. 03h of class/week = 180mn/week</comment>
+</row>
+<row name="HR_CLASS_PACKAGE" null="0" autoincrement="0">
+<datatype>TIME</datatype>
+<default>'NULL'</default><comment>Informs (in Hour) the total package of hours contracted by the student. e.g. 40h of class</comment>
+</row>
+<row name="DT_CLASS_BEGIN " null="0" autoincrement="0">
+<datatype>DATE</datatype>
+<default>'NULL'</default><comment>Informs the date when the class will effectively begin.</comment>
+</row>
+<row name="DT_CLASS_END" null="0" autoincrement="0">
+<datatype>DATE</datatype>
+<default>'NULL'</default><comment>Informs the date when the class will effectivily end.</comment>
+</row>
+<row name="DE_COMMENT" null="1" autoincrement="0">
+<datatype>MEDIUMTEXT(100)</datatype>
+<default>NULL</default><comment>Informs note in the case there is something to comment about the contract (optional).</comment>
+</row>
+<row name="FG_CLOSED_CONTRACT" null="0" autoincrement="0">
+<datatype>BINARY</datatype>
+<default>'FALSE'</default><comment>Flag to finalize a contract. e.g. True = finalize | False =  available (Default) .</comment>
+</row>
+<row name="DT_REGISTER" null="0" autoincrement="0">
+<datatype>TIMESTAMP</datatype>
+<default>'NULL'</default><comment>Informs the date when the information has been saved e.g. 30/10/2020</comment>
+</row>
+<row name="ID_CLASS_DAY_FIRST" null="0" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default><relation table="TB_CLASS_DAY" row="id" />
+<comment>Informs the first class day in the week. e.g. Monday(MON) | Wednesday(WED) |Saturday(SAT) | ...</comment>
+</row>
+<row name="ID_CLASS_DAY_SECOND" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default><relation table="TB_CLASS_DAY" row="id" />
+<comment>Informs the second class day in the week (opcional). e.g. Tuesday(TUE) | Thursday(THU) | ...</comment>
+</row>
+<row name="ID_OFFICE_TOWN" null="0" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default><relation table="TB_OFFICE_TOWN" row="id" />
+<comment>Informs the Abraço Cultural Town. e.g. SP | RJ | ...</comment>
+</row>
+<row name="ID_OFFICE" null="0" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default><relation table="TB_OFFICE" row="id" />
+<comment>Informs the class Office. e.g. PINHEIROS | TATUAPE | ...</comment>
+</row>
+<row name="ID_MODULE" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default><relation table="TB_MODULE" row="id" />
+<comment>Informs class' module information. e.g. Particular | Extensive | Intensive ...</comment>
+</row>
+<row name="ID_MODULE_TYPE" null="0" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default><relation table="TB_MODULE_TYPE" row="id" />
+<comment>Informs the class' module type information. e.g.  presencial | online | Mix ..</comment>
+</row>
+<row name="ID_LANGUAGE" null="0" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default><relation table="TB_LANGUAGE" row="id" />
+<comment>Informs the teaching language e.g. French | English ...</comment>
+</row>
+<row name="ID_LANGAUGE_LEVEL" null="0" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default><relation table="TB_LANGAUGE_LEVEL" row="id" />
+<comment>Informs the teaching language e.g. French (FR) | English (EN) ...</comment>
+</row>
+<row name="ID_CLASS_TYPE" null="0" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default><relation table="TB_CLASS_TYPE" row="id" />
+<comment>Informs the class type description. e.g. Course (CRS) | Workshop (WRK) | ...</comment>
+</row>
+<key type="PRIMARY" name="">
+<part>id</part>
+</key>
+<comment>This table stores contract's data. Students as well as professor must sign a term of contract before to begin a class.</comment>
+</table>
+<table x="171" y="202" name="TB_CONTRACT_MODEL">
+<row name="id" null="1" autoincrement="1">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="NM_CONTRACT_MODEL" null="0" autoincrement="0">
+<datatype>MEDIUMTEXT(30)</datatype>
+<default>'NULL'</default><comment>Informs Contract model's name. e.g. Student Contract for private class</comment>
+</row>
+<row name="DE_CONTRACT_MODEL" null="0" autoincrement="0">
+<datatype>BLOB</datatype>
+<default>'NULL'</default><comment>Informs Contract model's description i.e. Contract content</comment>
+</row>
+<row name="DT_REGISTER" null="0" autoincrement="0">
+<datatype>TIMESTAMP</datatype>
+<default>'NULL'</default><comment>Informs the date when the information has been saved e.g. 30/11/2020</comment>
+</row>
+<key type="PRIMARY" name="">
+<part>id</part>
+</key>
+<comment>This table stores Contract model's data. The model of a contract can be diferent according to the user perfil or the person or company who is contracted.</comment>
+</table>
+<table x="603" y="50" name="TB_STUDENT">
+<row name="id" null="1" autoincrement="1">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="ID_PERSON" null="0" autoincrement="0">
+<datatype>BIGINT</datatype>
+<default>NULL</default><relation table="TB_USER" row="id" />
+</row>
+<row name="DE_PAYMENT_DISCOUNT" null="1" autoincrement="0">
+<datatype>DECIMAL(6)</datatype>
+<default>NULL</default><comment>Informs if there will be a discount in the payment. e.g. User can save R$100 as a discount to the total value if he/she did more than two modules of a determinate language class.</comment>
+</row>
+<row name="FG_RECEIVE_BOOK" null="1" autoincrement="0">
+<datatype>BINARY</datatype>
+<default>NULL</default><comment>Flag to inform whether the student has already received his book or not.</comment>
+</row>
+<row name="FG_RECEIVE_CERTIFICATE" null="1" autoincrement="0">
+<datatype>BINARY</datatype>
+<default>NULL</default><comment>Flag to inform whether the student has already received his certificate or not at the end of the course.</comment>
+</row>
+<row name="FG_SIGN_CONTRACT" null="0" autoincrement="0">
+<datatype>BINARY</datatype>
+<default>'NULL'</default><comment>Flag to inform whether the student has already signed the contract or not.</comment>
+</row>
+<row name="DT_REGISTER" null="0" autoincrement="0">
+<datatype>TIMESTAMP</datatype>
+<default>'NULL'</default><comment>Informs the date when the information has been saved. e.g. 14/09/2020</comment>
+</row>
+<row name="ID_CONTRACT" null="0" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default><relation table="TB_CONTRACT" row="id" />
+<comment>Informs student's contract.</comment>
+</row>
+<row name="ID_PAYMENT" null="0" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default><relation table="TB_PAYMENT" row="id" />
+<comment>Informs Student's payment form e.g. Parcel (x4) with credit card | cash | ...</comment>
+</row>
+<row name="ID_PAYMENT_TYPE" null="0" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default><relation table="TB_PAYMENT_TYPE" row="id" />
+<comment>Informs student's  payment type i.e. the way that the student will pay the value of the course</comment>
+</row>
+<row name="ID_CONTRACT_MODEL" null="0" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default><relation table="TB_CONTRACT_MODEL" row="id" />
+<comment>Informs student's contract model.</comment>
+</row>
+<row name="ID_EVALUATION" null="0" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default><relation table="TB_EVALUATION" row="id" />
+<comment>Informs the evaluation note by the Student.</comment>
+</row>
+<key type="PRIMARY" name="">
+<part>id</part>
+</key>
+<comment>This table stores some students information related to the contract i.e. student subscribed in any language class.</comment>
+</table>
+<table x="1001" y="251" name="TB_PAYMENT">
+<row name="id" null="1" autoincrement="1">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="DE_PAYMENT" null="0" autoincrement="0">
+<datatype>MEDIUMTEXT(20)</datatype>
+<default>'NULL'</default><comment>Payment description e.g Parcel (x1) | Parcel (x4) | Cash | Free (scholarship) | ...</comment>
+</row>
+<key type="PRIMARY" name="">
+<part>id</part>
+</key>
+<comment>This table stores information about payment</comment>
+</table>
+<table x="1001" y="352" name="TB_PAYMENT_TYPE">
+<row name="id" null="1" autoincrement="1">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="TP_PAYMENT" null="0" autoincrement="0">
+<datatype>MEDIUMTEXT(20)</datatype>
+<default>'NULL'</default><comment>Payment type e.g. Money | Transfert | Credit card | Bank slip | PagSeguro| Paypal | Free |...</comment>
+</row>
+<key type="PRIMARY" name="">
+<part>id</part>
+</key>
+<comment>This table stores informations about Payment type.</comment>
+</table>
+<table x="629" y="440" name="TB_CONTRACTED">
+<row name="id" null="1" autoincrement="1">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="DT_REGISTER" null="0" autoincrement="0">
+<datatype>TIMESTAMP</datatype>
+<default>'NULL'</default><comment>Informs the date when the information has been saved. e.g. 14/09/2020</comment>
+</row>
+<row name="ID_PERSON" null="0" autoincrement="0">
+<datatype>BIGINT</datatype>
+<default>NULL</default><relation table="TB_USER" row="id" />
+<comment>Informs the person or company contracted.</comment>
+</row>
+<row name="ID_CONTRACT" null="0" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default><relation table="TB_CONTRACT" row="id" />
+<comment>Informs the contract assigned to the person or company contracted.</comment>
+</row>
+<row name="ID_PAYMENT" null="0" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default><relation table="TB_PAYMENT" row="id" />
+<comment>Informs the Payment for the person or company contracted.</comment>
+</row>
+<row name="ID_PAYMENT_TYPE" null="0" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default><relation table="TB_PAYMENT_TYPE" row="id" />
+<comment>Informs the payment type for the person or company contracted.</comment>
+</row>
+<row name="ID_CONTRACT_MODEL" null="0" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default><relation table="TB_CONTRACT_MODEL" row="id" />
+<comment>Informs Contract model for the person or company contracted.</comment>
+</row>
+<row name="ID_EVALUATION" null="0" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default><relation table="TB_EVALUATION" row="id" />
+<comment>Informs the evaluation note by the person or the company contracted.</comment>
+</row>
+<key type="PRIMARY" name="">
+<part>id</part>
+</key>
+<comment>This table stores informations about the person or the company who signed the contract.</comment>
+</table>
+<table x="2102" y="302" name="TB_MODULE">
+<row name="id" null="1" autoincrement="1">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="CD_MODULE" null="0" autoincrement="0">
+<datatype>MEDIUMTEXT(3)</datatype>
+<default>'NULL'</default><comment>Class module's code. e.g. EXT |  INT | PRV | INC | ONL | ...</comment>
+</row>
+<row name="DE_MODULE" null="0" autoincrement="0">
+<datatype>MEDIUMTEXT(30)</datatype>
+<default>'NULL'</default><comment>Class module description e.g. Intensive, Extensive, Private, Incompany...</comment>
+</row>
+<key type="PRIMARY" name="">
+<part>id</part>
+</key>
+<comment>This table stores class module information. Module's name is given to a class according to: the teaching period, the teaching place, the number of student.</comment>
+</table>
+<table x="2102" y="451" name="TB_MODULE_TYPE">
+<row name="id" null="1" autoincrement="1">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="CD_MODULE_TYPE" null="0" autoincrement="0">
+<datatype>MEDIUMTEXT(3)</datatype>
+<default>'NULL'</default><comment>Module's type code e.g. "ONL" for Online class | "PRS" for Presencial class | "MIX" for Presencial and Online class.</comment>
+</row>
+<row name="DE_MODULE_TYPE" null="0" autoincrement="0">
+<datatype>MEDIUMTEXT(30)</datatype>
+<default>'NULL'</default><comment>Module's type description e.g. "Online" class | "Presencial" class | "Mix" for presencial and online class.</comment>
+</row>
+<key type="PRIMARY" name="">
+<part>id</part>
+</key>
+<comment>This table stores class module type information i.e. a class can be presencial or online or Mix (presencial and online).</comment>
+</table>
+<table x="2102" y="150" name="TB_CLASS_DAY">
+<row name="id" null="1" autoincrement="1">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="CD_CLASS_DAY" null="0" autoincrement="0">
+<datatype>MEDIUMTEXT(3)</datatype>
+<default>'NULL'</default><comment>Informs the code of class day. e.g. MON | TUE | WED | THU | FRI | SAT</comment>
+</row>
+<row name="DE_CLASS_DAY" null="0" autoincrement="0">
+<datatype>MEDIUMTEXT(20)</datatype>
+<default>'NULL'</default><comment>Informs the description of the class day. e.g. Monday, Tuesday, Wednesday, Thursdays, Friday, Sunday </comment>
+</row>
+<key type="PRIMARY" name="">
+<part>id</part>
+</key>
+<comment>this tables is responsible to store all class day code and descriptin. e.g. Monday(MON), Wednesday(WED), ....</comment>
+</table>
+<table x="502" y="2053" name="TB_ADDITIONAL_INFO">
+<row name="id" null="1" autoincrement="1">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="DE_PROFESSION" null="0" autoincrement="0">
+<datatype>MEDIUMTEXT(30)</datatype>
+<default>'NULL'</default><comment>Informs User's profession. e.g. Architect | Students | Graphic Designer | ...</comment>
+</row>
+<key type="PRIMARY" name="">
+<part>id</part>
+</key>
+<comment>This table stores Additional information about the user.</comment>
+</table>
+<table x="501" y="1902" name="TB_NATIONALITY">
+<row name="id" null="1" autoincrement="1">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="CD_NATIONALITY" null="0" autoincrement="0">
+<datatype>MEDIUMTEXT(3)</datatype>
+<default>'NULL'</default><comment>Informs User's nationalty. e. g. Brazilian | Syrian | ...</comment>
+</row>
+<row name="DE_NATIONALITY" null="0" autoincrement="0">
+<datatype>INTEGER(30)</datatype>
+<default>NULL</default><comment>Informs User's nationalty. e. g. Brazilian | Syrian | ...</comment>
+</row>
+<key type="PRIMARY" name="">
+<part>id</part>
+</key>
+<comment>This table stores User's nationality.</comment>
+</table>
+<table x="2102" y="601" name="TB_CLASS_TYPE">
+<row name="id" null="1" autoincrement="1">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="CD_CLASS_TYPE" null="0" autoincrement="0">
+<datatype>MEDIUMTEXT(3)</datatype>
+<default>'NULL'</default><comment>Informs class type code. e.g. CRS | WRK | ...</comment>
+</row>
+<row name="DE_CLASS_TYPE" null="1" autoincrement="0">
+<datatype>MEDIUMTEXT(20)</datatype>
+<default>NULL</default><comment>Informs the class type description. e.g. Course | Workshop | ...</comment>
+</row>
+<key type="PRIMARY" name="">
+<part>id</part>
+</key>
+<comment>This table stores the class type data for the contract.</comment>
+</table>
+<table x="86" y="1468.6666259765625" name="TB_BANK_ACCOUNT">
+<row name="id" null="1" autoincrement="1">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="DE_AGENCY" null="0" autoincrement="0">
+<datatype>MEDIUMTEXT(10)</datatype>
+<default>'NULL'</default><comment>Informs User's bank agency</comment>
+</row>
+<row name="DE_ACCOUNT" null="1" autoincrement="0">
+<datatype>MEDIUMTEXT</datatype>
+<default>NULL</default><comment>Informs User's bank account.</comment>
+</row>
+<row name="ID_BANK_NAME" null="0" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default><relation table="TB_BANK_NAME" row="id" />
+<comment>Informs user's Bank name. e.g. Itaú | Brasdesco | ...</comment>
+</row>
+<key type="PRIMARY" name="">
+<part>id</part>
+</key>
+<comment>This table Stores informations about user's bank account. this information will help to pay the contracted the person or the company contracted.</comment>
+</table>
+<table x="99" y="1602" name="TB_BANK_NAME">
+<row name="id" null="1" autoincrement="1">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="NM_BANK" null="1" autoincrement="0">
+<datatype>MEDIUMTEXT(30)</datatype>
+<default>NULL</default><comment>Informs user's bank name. e.g. Banco do Brasil | Itaú | Brasdesco | ....</comment>
+</row>
+<key type="PRIMARY" name="">
+<part>id</part>
+</key>
+<comment>This table stores User's bank name</comment>
+</table>
+<table x="621.3333435058594" y="703.3333320617676" name="TB_PRESENCE">
+<row name="id" null="1" autoincrement="1">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="DT_PRESENCE" null="0" autoincrement="0">
+<datatype>TIMESTAMP</datatype>
+<default>'NULL'</default><comment>Informs the class date to mark the presence.</comment>
+</row>
+<row name="ID_CONTRACT" null="0" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default><relation table="TB_CONTRACT" row="id" />
+<comment>Informs the contract.</comment>
+</row>
+<row name="ID_CONTRACTED" null="0" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default><relation table="TB_CONTRACTED" row="id" />
+<comment>Informs the person or the company contracted.</comment>
+</row>
+<row name="ID_STUDENT" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default><relation table="TB_STUDENT" row="id" />
+<comment>Informs the Student to fill the presence list.</comment>
+</row>
+<row name="ID_PRESENCE_TYPE" null="0" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default><relation table="TB_PRESENCE_TYPE" row="id" />
+<comment>Informs Presence type. e.g. Presence (P) | Absent (A) | ...</comment>
+</row>
+<key type="PRIMARY" name="">
+<part>id</part>
+</key>
+<comment>This table stores information about user's presence according to the class type (see TB_CASS_TYPE).</comment>
+</table>
+<table x="619.6666564941406" y="875.3333282470703" name="TB_PRESENCE_TYPE">
+<row name="id" null="1" autoincrement="1">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="CD_PRESENCE" null="0" autoincrement="0">
+<datatype>MEDIUMTEXT(3)</datatype>
+<default>'NULL'</default><comment>Informs presence type. e.g. "P" for presence | "A" for Absent | ...</comment>
+</row>
+<row name="DE_PRESENCE" null="0" autoincrement="0">
+<datatype>MEDIUMTEXT(20)</datatype>
+<default>'NULL'</default><comment>Informs Presence type description. e.g. Presence | Absent | ...</comment>
+</row>
+<key type="PRIMARY" name="">
+<part>id</part>
+</key>
+<comment>This table stores the Presence's type for presence table.</comment>
+</table>
+<table x="32.666656494140625" y="354" name="TB_EVALUATION">
+<row name="id" null="1" autoincrement="1">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="ID_EVALUATION_TYPE" null="0" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default><relation table="TB_EVALUATION_TYPE" row="id" />
+<comment>Informs the type of evaluation.</comment>
+</row>
+<row name="DE_EVALUATION_POINT" null="0" autoincrement="0">
+<datatype>DOUBLE(6)</datatype>
+<default>0</default><comment>Informs the evualation point. e.g. "07,50" /10</comment>
+</row>
+<row name="DE_EVALUATION_POINT_TOTAL" null="0" autoincrement="0">
+<datatype>INTEGER(3)</datatype>
+<default>NULL</default><comment>Informs the evualation total point. e.g. 07,50 / "10"</comment>
+</row>
+<row name="DE_COMMENT" null="1" autoincrement="0">
+<datatype>MEDIUMTEXT(100)</datatype>
+<default>NULL</default><comment>informs the evaluation's comment. e.g. this Student is very attentive... | This professor teach very well ...</comment>
+</row>
+<row name="DT_REGISTER" null="0" autoincrement="0">
+<datatype>TIMESTAMP</datatype>
+<default>'NULL'</default><comment>Informs the date when the information has been saved. e.g. 14/09/2020</comment>
+</row>
+<key type="PRIMARY" name="">
+<part>id</part>
+</key>
+<comment>This table stores information about evaluation for student and person or company contracted.</comment>
+</table>
+<table x="156.66665649414062" y="523" name="TB_EVALUATION_TYPE">
+<row name="id" null="1" autoincrement="1">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="TP_EVALUTION" null="0" autoincrement="0">
+<datatype>MEDIUMTEXT(20)</datatype>
+<default>'NULL'</default><comment>Informs the type of evaluation. e.g. Oral | Scores | Home works | Tests | ...</comment>
+</row>
+<key type="PRIMARY" name="">
+<part>id</part>
+</key>
+<comment>This table stores information about the type of evaluation.</comment>
+</table>
+<table x="48" y="624" name="TB_POST">
+<row name="id" null="1" autoincrement="1">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="NM_POST" null="0" autoincrement="0">
+<datatype>MEDIUMTEXT(30)</datatype>
+<default>'NULL'</default><comment>Informs the post name (title of the post).</comment>
+</row>
+<row name="DE_POST" null="0" autoincrement="0">
+<datatype>BLOB</datatype>
+<default>'NULL'</default><comment>Informs the post contennt. Post could have media content.</comment>
+</row>
+<row name="DT_REGISTER" null="0" autoincrement="0">
+<datatype>TIMESTAMP</datatype>
+<default>'NULL'</default><comment>Informs the date when the information has been saved. e.g. 14/09/2020</comment>
+</row>
+<row name="ID_PROFILE" null="0" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default><relation table="TB_PROFILE" row="id" />
+<comment>Informs what perfil might see the post.</comment>
+</row>
+<row name="ID_USER" null="0" autoincrement="0">
+<datatype>BIGINT</datatype>
+<default>NULL</default><relation table="TB_USER" row="id" />
+<comment>Informs the author of the post. e.g. Post is written by "John Doe"</comment>
+</row>
+<row name="ID_POST_TYPE" null="0" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default><relation table="TB_POST_TYPE" row="id" />
+<comment>Informs the post type.</comment>
+</row>
+<key type="PRIMARY" name="">
+<part>id</part>
+</key>
+<comment>This table stores information (like a feed) wich can be posted by coordinator to another perfil.</comment>
+</table>
+<table x="39" y="821.3333435058594" name="TB_POST_TYPE">
+<row name="id" null="1" autoincrement="1">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="NM_POST_TYPE" null="0" autoincrement="0">
+<datatype>MEDIUMTEXT(20)</datatype>
+<default>'NULL'</default><comment>Informs the name of post type. e. g. Chat | Email | Publicity | Feed | Advise | ...</comment>
+</row>
+<key type="PRIMARY" name="">
+<part>id</part>
+</key>
+<comment>This table informs the type of te post.</comment>
+</table>
+<table x="55" y="1699.6666259765625" name="TB_ACCESS_RIGHT">
+<row name="id" null="1" autoincrement="1">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="FG_USER" null="0" autoincrement="0">
+<datatype>BINARY</datatype>
+<default>'NULL'</default><comment>Informs whether perfil have access right to User's page.</comment>
+</row>
+<row name="FG_PROFILE" null="0" autoincrement="0">
+<datatype>BINARY</datatype>
+<default>'NULL'</default><comment>Informs whether perfil have access right to Profile's page.</comment>
+</row>
+<row name="FG_STATUS" null="0" autoincrement="0">
+<datatype>BINARY</datatype>
+<default>'NULL'</default><comment>Informs whether perfil have access right to Status' page.</comment>
+</row>
+<row name="FG_OFFICE_TOWN" null="0" autoincrement="0">
+<datatype>BINARY</datatype>
+<default>'NULL'</default><comment>Informs whether perfil have access right to Office Town's page.</comment>
+</row>
+<row name="FG_OFFICE" null="0" autoincrement="0">
+<datatype>BINARY</datatype>
+<default>'NULL'</default><comment>Informs whether perfil have access right to Office's page.</comment>
+</row>
+<row name="FG_LANGUAGE" null="0" autoincrement="0">
+<datatype>BINARY</datatype>
+<default>'NULL'</default><comment>Informs whether perfil have access right to Language's page.</comment>
+</row>
+<row name="FG_LANGUAGE_LEVEL" null="0" autoincrement="0">
+<datatype>BINARY</datatype>
+<default>'NULL'</default><comment>Informs whether perfil have access right to Language Level's page.</comment>
+</row>
+<row name="FG_NATIONALITY" null="0" autoincrement="0">
+<datatype>BINARY</datatype>
+<default>'NULL'</default><comment>Informs whether perfil have access right to Nationality's page.</comment>
+</row>
+<row name="FG_ADDITIONAL_INFO" null="0" autoincrement="0">
+<datatype>BINARY</datatype>
+<default>'NULL'</default><comment>Informs whether perfil have access right to Additional Info's page.</comment>
+</row>
+<row name="FG_BANK_ACCOUNT" null="0" autoincrement="0">
+<datatype>BINARY</datatype>
+<default>'NULL'</default><comment>Informs whether perfil have access right to Bank Account's page.</comment>
+</row>
+<row name="FG_BANK_NAME" null="0" autoincrement="0">
+<datatype>BINARY</datatype>
+<default>'NULL'</default><comment>Informs whether perfil have access right to Bank Name's page.</comment>
+</row>
+<row name="FG_ACCESS_RIGHT" null="0" autoincrement="0">
+<datatype>BINARY</datatype>
+<default>'NULL'</default><comment>Informs whether perfil have access right to Access Right's page.</comment>
+</row>
+<row name="FG_POST" null="0" autoincrement="0">
+<datatype>BINARY</datatype>
+<default>'NULL'</default><comment>Informs whether perfil have access right to Post's page.</comment>
+</row>
+<row name="FG_POST_TYPE" null="0" autoincrement="0">
+<datatype>BINARY</datatype>
+<default>'NULL'</default><comment>Informs whether perfil have access right to Post Type's page.</comment>
+</row>
+<row name="FG_CONTRACT" null="0" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default><comment>Informs whether perfil have access right to Contract's page.</comment>
+</row>
+<row name="FG_CLASS_DAY" null="0" autoincrement="0">
+<datatype>BINARY</datatype>
+<default>'NULL'</default><comment>Informs whether perfil have access right to Class Day's page.</comment>
+</row>
+<row name="FG_MODULE" null="0" autoincrement="0">
+<datatype>BINARY</datatype>
+<default>'NULL'</default><comment>Informs whether perfil have access right to Module's page.</comment>
+</row>
+<row name="FG_MODULE_TYPE" null="0" autoincrement="0">
+<datatype>BINARY</datatype>
+<default>'NULL'</default><comment>Informs whether perfil have access right to Module Type's page.</comment>
+</row>
+<row name="FG_CLASS_TYPE" null="0" autoincrement="0">
+<datatype>BINARY</datatype>
+<default>'NULL'</default><comment>Informs whether perfil have access right to Class Type's page.</comment>
+</row>
+<row name="FG_CONTRACT_MODEL" null="0" autoincrement="0">
+<datatype>BINARY</datatype>
+<default>'NULL'</default><comment>Informs whether perfil have access right to Contract Model's page.</comment>
+</row>
+<row name="FG_STUDENT" null="0" autoincrement="0">
+<datatype>BINARY</datatype>
+<default>'NULL'</default><comment>Informs whether perfil have access right to Student's page.</comment>
+</row>
+<row name="FG_CONTRACTED" null="0" autoincrement="0">
+<datatype>BINARY</datatype>
+<default>'NULL'</default><comment>Informs whether perfil have access right to "Contracted" page.</comment>
+</row>
+<row name="FG_PAYMENT" null="0" autoincrement="0">
+<datatype>BINARY</datatype>
+<default>'NULL'</default><comment>Informs whether perfil have access right to Payment's page.</comment>
+</row>
+<row name="FG_PAYMENT_TYPE" null="0" autoincrement="0">
+<datatype>BINARY</datatype>
+<default>'NULL'</default><comment>Informs whether perfil have access right to Payment Type's page.</comment>
+</row>
+<row name="FG_PRESENCE" null="0" autoincrement="0">
+<datatype>BINARY</datatype>
+<default>'NULL'</default><comment>Informs whether perfil have access right to Presence's page.</comment>
+</row>
+<row name="FG_PRESENCE_TYPE" null="0" autoincrement="0">
+<datatype>BINARY</datatype>
+<default>'NULL'</default><comment>Informs whether perfil have access right to Presence Type's page.</comment>
+</row>
+<row name="FG_EVALUATION" null="0" autoincrement="0">
+<datatype>BINARY</datatype>
+<default>'NULL'</default><comment>Informs whether perfil have access right to Evaluation's page.</comment>
+</row>
+<row name="FG_EVALUATION_TYPE" null="0" autoincrement="0">
+<datatype>BINARY</datatype>
+<default>'NULL'</default><comment>Informs whether perfil have access right to Evaluation Type's page.</comment>
+</row>
+<row name="FG_POST" null="0" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default><comment>Informs whether perfil have access right to Post's page.</comment>
+</row>
+<row name="FG_POST_TYPE" null="0" autoincrement="0">
+<datatype>BINARY</datatype>
+<default>'NULL'</default><comment>Informs whether perfil have access right to Post Type's page.</comment>
+</row>
+<key type="PRIMARY" name="">
+<part>id</part>
+</key>
+<comment>This table sotres information about the access right according to the user profile.</comment>
+</table>
+</sql>
