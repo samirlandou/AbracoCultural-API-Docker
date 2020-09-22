@@ -11,7 +11,7 @@ See below some nomenclatures used in this data base: <br/>
 **TB -> TABLE** (e.g. TB_USER -> User Table ) <br/>
 **NM -> NAME** (e.g. NM_LANGUAGE -> Language Name)  <br/>
 **DE -> DESCRIPTION** (e.g. DE_STATUS -> Status Description) <br/>
-**TP -> TYPE** (e.g. TP_MODULE -> Module Description)  <br/>
+**TP -> TYPE** (e.g. TP_MODULE -> Module Type)  <br/>
 **DT -> DATE** (e.g. DT_REGISTER -> Register Date)  <br/>
 **FG -> FLAG** (e.g. FG_ACCESS -> Access Flag)  <br/>
 **CD -> CODE** (e.g. CD_CONTRACT -> Contract Code)  <br/>
